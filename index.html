@@ -54,8 +54,19 @@ figcaption span{color:var(--muted)}
 .slider:hover .geser,.slider:focus-within .geser{opacity:1}
 @media(hover:none){.geser{opacity:1}}
 .prev{left:10px}.next{right:10px}
-.hitung{position:absolute;right:10px;bottom:10px;padding:2px 9px;border-radius:8px;background:rgba(29,31,34,.7);color:#fff;font-size:12px}
-.slider.satu .geser,.slider.satu .hitung{display:none}
+.slider.satu .geser,.slider.satu .slider{cursor:zoom-in}
+.titik{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:7px;pointer-events:none}
+.titik i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 3px rgba(0,0,0,.45);transition:background .2s,transform .2s}
+.titik i.aktif{background:#fff;transform:scale(1.25)}
+figcaption[role="button"]{cursor:pointer}
+body:has(dialog[open]){overflow:hidden}
+dialog{border:0;padding:20px;background:transparent;color:#fff;max-width:100vw;max-height:100vh;overflow:visible}
+dialog::backdrop{background:rgba(15,16,18,.85)}
+.kotak-besar{display:flex;flex-direction:column;align-items:center;gap:14px}
+.slider.besar{cursor:default;border-radius:16px}
+.besar .geser{opacity:1;width:40px;height:40px}
+.judul-besar{font-size:15px;text-align:center}
+.tutup{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:16px;width:42px;height:42px;border:0;border-radius:12px;background:rgba(250,250,249,.92);color:#1d1f22;font-size:18px;cursor:pointer}
 footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px}
 .sosial{display:flex;gap:12px;margin-top:22px}
 .kontak .sosial a{display:flex;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;color:var(--ink);transition:color .2s,border-color .2s}
@@ -105,7 +116,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 4</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Rakyat Juga Ingin Kaya <span>Komik, 2026</span></figcaption>
         </figure>
@@ -118,7 +129,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 3</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Identitas Kedai Kopi <span>Desain, 2026</span></figcaption>
         </figure>
@@ -133,7 +144,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 5</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Kucing Lantai Tiga <span>Komik, 2025</span></figcaption>
         </figure>
@@ -146,7 +157,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 3</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Poster Festival Buku <span>Desain, 2025</span></figcaption>
         </figure>
@@ -158,7 +169,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 2</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Sketsa Malam <span>Komik, 2025</span></figcaption>
         </figure>
@@ -174,7 +185,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
           </div>
           <button class="geser prev" aria-label="Gambar sebelumnya">&#8249;</button>
           <button class="geser next" aria-label="Gambar berikutnya">&#8250;</button>
-          <span class="hitung">1 / 6</span>
+          <span class="titik"></span>
         </div>
           <figcaption>Sampul Buku Cerita <span>Desain, 2024</span></figcaption>
         </figure>
@@ -208,6 +219,8 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);f
   <footer>© 2026 Layerterakhir. Semua karya milik pembuatnya.</footer>
 </div>
 
+<dialog id="besar" aria-label="Tampilan besar"><div class="kotak-besar"><div id="isiBesar"></div><div class="judul-besar" id="judulBesar"></div></div><button class="tutup" id="tutupBesar" aria-label="Tutup">&#10005;</button></dialog>
+
 <script>
 // Tombol filter: menampilkan karya sesuai kategori
 var tombol = document.querySelectorAll("#filter button");
@@ -228,14 +241,49 @@ document.querySelectorAll(".drop a").forEach(function(a){
     document.activeElement.blur();
   });
 });
-// Slider gambar: geser dengan jari/kursor atau tombol panah
-document.querySelectorAll(".slider").forEach(function(s){
-  var tr=s.querySelector(".track"), n=tr.children.length, h=s.querySelector(".hitung");
+// Satu fungsi untuk semua slider (galeri dan tampilan besar): titik, tombol panah, geser
+function pasang(s){
+  var tr=s.querySelector(".track"), n=tr.children.length, t=s.querySelector(".titik");
   if(n<2){ s.classList.add("satu"); return; }
-  function perbarui(){ h.textContent=(Math.round(tr.scrollLeft/tr.clientWidth)+1)+" / "+n; }
-  tr.addEventListener("scroll",perbarui);
-  s.querySelector(".prev").onclick=function(){ tr.scrollBy({left:-tr.clientWidth,behavior:"smooth"}); };
-  s.querySelector(".next").onclick=function(){ tr.scrollBy({left:tr.clientWidth,behavior:"smooth"}); };
+  t.innerHTML="";
+  for(var i=0;i<n;i++){ t.appendChild(document.createElement("i")); }
+  function perbarui(){
+    var a=Math.round(tr.scrollLeft/(tr.clientWidth||1));
+    Array.prototype.forEach.call(t.children,function(d,i){ d.classList.toggle("aktif",i===a); });
+  }
+  tr.addEventListener("scroll",perbarui); perbarui();
+  s.querySelector(".prev").onclick=function(e){ e.stopPropagation(); tr.scrollBy({left:-tr.clientWidth,behavior:"smooth"}); };
+  s.querySelector(".next").onclick=function(e){ e.stopPropagation(); tr.scrollBy({left:tr.clientWidth,behavior:"smooth"}); };
+}
+document.querySelectorAll(".slider").forEach(pasang);
+
+// Klik gambar atau judul: buka tampilan besar yang tetap bisa digeser
+var besar=document.getElementById("besar");
+document.querySelectorAll("figure").forEach(function(f){
+  var s=f.querySelector(".slider"), c=f.querySelector("figcaption");
+  function buka(){
+    var tr=s.querySelector(".track"), posisi=Math.round(tr.scrollLeft/(tr.clientWidth||1));
+    var kl=s.cloneNode(true), p=(s.style.aspectRatio||"4 / 5").split("/"), r=parseFloat(p[0])/parseFloat(p[1])||0.8;
+    kl.classList.remove("satu"); kl.classList.add("besar");
+    kl.style.width="min(92vw, calc(80vh * "+r+"))";
+    document.getElementById("isiBesar").replaceChildren(kl);
+    document.getElementById("judulBesar").textContent=c.firstChild.textContent.trim();
+    besar.showModal();
+    var ktr=kl.querySelector(".track");
+    ktr.scrollLeft=posisi*ktr.clientWidth;
+    pasang(kl);
+  }
+  s.addEventListener("click",buka);
+  c.setAttribute("role","button"); c.setAttribute("tabindex","0");
+  c.addEventListener("click",buka);
+  c.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); buka(); } });
+});
+function tutupBesar(){ besar.close(); document.getElementById("isiBesar").replaceChildren(); }
+document.getElementById("tutupBesar").onclick=tutupBesar;
+besar.addEventListener("click",function(e){ if(e.target===besar) tutupBesar(); });
+besar.addEventListener("keydown",function(e){
+  var b=besar.querySelector(e.key==="ArrowLeft"?".prev":e.key==="ArrowRight"?".next":"#x");
+  if(b) b.click();
 });
 </script>
 </body>
