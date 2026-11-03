@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Layerterakhir – Komik &amp; Desain</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fafaf9;--ink:#1d1f22;--muted:#6b6f76;--line:#dcdcd8;--accent:#2f3f73;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17181b;--ink:#ecebe8;--muted:#9a9da4;--line:#2d2f34;--accent:#9fb0ee}}
+:root[data-theme="dark"]{--bg:#17181b;--ink:#ecebe8;--muted:#9a9da4;--line:#2d2f34;--accent:#9fb0ee}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 "Inter",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+header{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0}
+.logo{font:600 20px "Inter",system-ui,sans-serif;letter-spacing:-.02em}
+nav a{margin-left:26px;color:var(--muted);transition:color .2s}
+nav a:hover{color:var(--ink)}
+.menu{position:relative;display:inline-block;margin-left:26px}
+.menu>a{margin-left:0}
+.drop{position:absolute;top:100%;left:-12px;min-width:150px;padding:8px;background:var(--bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.08);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s,transform .2s,visibility .2s;z-index:5}
+.menu:hover .drop,.menu:focus-within .drop{opacity:1;visibility:visible;transform:none}
+.drop a{display:block;margin:0;padding:8px 12px;border-radius:9px}
+.drop a:hover{background:var(--line)}
+.hero{padding:90px 0 80px}
+.hero h1{font:600 clamp(38px,7vw,76px)/1.05 "Inter",system-ui,sans-serif;letter-spacing:-.035em;margin:0;max-width:16ch}
+.hero p{max-width:44ch;color:var(--muted);margin:28px 0 0}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font:600 26px "Inter",system-ui,sans-serif;letter-spacing:-.02em;margin:0 0 22px}
+.filter{display:flex;gap:22px;margin-bottom:34px}
+.filter button{background:none;border:1px solid var(--line);border-radius:10px;padding:6px 16px;font:inherit;color:var(--muted);cursor:pointer}
+.filter button[aria-pressed="true"]{color:var(--ink);border-color:var(--accent)}
+.galeri{columns:3 260px;column-gap:28px}
+figure{margin:0 0 34px;break-inside:avoid}
+figure .gambar{display:flex;align-items:center;justify-content:center;color:#55595f;font-size:14px;overflow:hidden;border-radius:14px}
+figure img{width:100%;display:block}
+figcaption{padding-top:10px;font-size:15px}
+figcaption span{color:var(--muted)}
+.tentang{display:grid;grid-template-columns:1fr 1.4fr;gap:40px}
+.tentang p{margin:0 0 14px;max-width:56ch}
+.kontak a{border-bottom:1px solid var(--accent)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+@media(max-width:720px){.hero{padding:56px 0}.tentang{grid-template-columns:1fr;gap:12px}nav a{margin-left:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a class="logo" href="#atas">Layerterakhir</a>
+    <nav><div class="menu"><a href="#karya">Karya</a><div class="drop"><a href="#karya" data-f="komik">Komik</a><a href="#karya" data-f="desain">Desain</a></div></div><a href="#tentang">Tentang</a><a href="#kontak">Kontak</a></nav>
+  </header>
+
+  <main id="atas">
+
+    <!-- PEMBUKA: ganti kalimatnya -->
+    <div class="hero">
+      <h1>Komik dan desain, dilapis sampai selesai.</h1>
+      <p>Saya komikus dan desainer dari Yogyakarta. Di sini kumpulan karya yang sudah saya selesaikan.</p>
+    </div>
+
+    <!-- KARYA: satu <figure> = satu karya.
+         data-kat berisi "komik" atau "desain" (dipakai tombol filter).
+         Untuk gambar asli, ganti seluruh isi <div class="gambar"> dengan:
+         <img src="alamat-gambar.jpg" alt="deskripsi gambar">
+         Tinggi kotak contoh diatur lewat style height; gambar asli menyesuaikan sendiri. -->
+    <section id="karya">
+      <h2>Karya</h2>
+      <div class="filter" id="filter">
+        <button aria-pressed="true" data-f="semua">Semua</button>
+        <button aria-pressed="false" data-f="komik">Komik</button>
+        <button aria-pressed="false" data-f="desain">Desain</button>
+      </div>
+      <div class="galeri">
+        <figure data-kat="komik">
+          <div class="gambar" style="background:#d9dde3;height:380px">Gambar 1</div>
+          <figcaption>Hujan di Kota Lama <span>Komik, 2026</span></figcaption>
+        </figure>
+        <figure data-kat="desain">
+          <div class="gambar" style="background:#e4ddd3;height:260px">Gambar 2</div>
+          <figcaption>Identitas Kedai Kopi <span>Desain, 2026</span></figcaption>
+        </figure>
+        <figure data-kat="komik">
+          <div class="gambar" style="background:#cfd6cf;height:320px">Gambar 3</div>
+          <figcaption>Kucing Lantai Tiga <span>Komik, 2025</span></figcaption>
+        </figure>
+        <figure data-kat="desain">
+          <div class="gambar" style="background:#c9cfd8;height:340px">Gambar 4</div>
+          <figcaption>Poster Festival Buku <span>Desain, 2025</span></figcaption>
+        </figure>
+        <figure data-kat="komik">
+          <div class="gambar" style="background:#ddd6d6;height:280px">Gambar 5</div>
+          <figcaption>Sketsa Malam <span>Komik, 2025</span></figcaption>
+        </figure>
+        <figure data-kat="desain">
+          <div class="gambar" style="background:#d6d9c9;height:360px">Gambar 6</div>
+          <figcaption>Sampul Buku Cerita <span>Desain, 2024</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section id="tentang">
+      <div class="tentang">
+        <h2>Tentang</h2>
+        <div>
+          <p>Nama “Layerterakhir” datang dari tahap terakhir menggambar: lapisan tinta dan teks yang membuat sebuah halaman akhirnya selesai.</p>
+          <p>Saya mengerjakan komik pendek dan serial, ilustrasi, poster, serta identitas visual untuk usaha kecil.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK: ganti dengan email dan Instagram milikmu -->
+    <section id="kontak" class="kontak">
+      <h2>Kontak</h2>
+      <p>Untuk kerja sama atau pesanan: <a href="mailto:halo@layerterakhir.com">halo@layerterakhir.com</a></p>
+      <p><a href="https://instagram.com/layerterakhir" target="_blank" rel="noopener">Instagram</a></p>
+    </section>
+
+  </main>
+
+  <footer>© 2026 Layerterakhir. Semua karya milik pembuatnya.</footer>
+</div>
+
+<script>
+// Tombol filter: menampilkan karya sesuai kategori
+var tombol = document.querySelectorAll("#filter button");
+var karya = document.querySelectorAll("figure[data-kat]");
+tombol.forEach(function(t){
+  t.addEventListener("click", function(){
+    tombol.forEach(function(x){ x.setAttribute("aria-pressed", x === t); });
+    karya.forEach(function(k){
+      k.hidden = !(t.dataset.f === "semua" || k.dataset.kat === t.dataset.f);
+    });
+  });
+});
+// Submenu Karya: klik Komik/Desain menerapkan filter di galeri
+document.querySelectorAll(".drop a").forEach(function(a){
+  a.addEventListener("click", function(){
+    var t = document.querySelector('#filter button[data-f="' + a.dataset.f + '"]');
+    if(t) t.click();
+    document.activeElement.blur();
+  });
+});
+</script>
+</body>
+</html>
